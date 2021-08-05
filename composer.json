@@ -1,0 +1,10 @@
+{
+	"autoload" : {
+		"psr-4" : {
+			"Junpbelmondo\\SimpleRouter\\" : "src/"
+		}
+	},
+	"name" : "junpbelmondo/simple-router",
+	"description" : "簡易ルータ",
+	"license" : "MIT"
+}
