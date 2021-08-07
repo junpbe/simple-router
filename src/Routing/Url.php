@@ -54,7 +54,7 @@ class Url
         $url_paths = $this->getFullPaths();
 
         // URLのパスからアプリケーション基底パスを除く
-        foreach($this->pathExplode($this->app_base_path) as $idx => $path) {
+        foreach($this->parsePaths($this->app_base_path) as $idx => $path) {
             if(!isset($url_paths[$idx])) {
                 break;
             }
