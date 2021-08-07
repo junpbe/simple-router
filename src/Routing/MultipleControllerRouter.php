@@ -20,7 +20,7 @@ class MultipleControllerRouter extends AbstractRouter
         // パスが入っている場合、最初のパスをコントローラ名とする
         $this->controller_name = $this->root_controller_name;
         if(!empty($url_paths)) {
-            $this->controller_name = array_shift($url_paths);
+            $this->controller_name = ucfirst(array_shift($url_paths));
         }
 
         // パスが入っている場合、最初のパスをアクションとする。そうでない場合デフォルトのアクションを使用する。

@@ -48,7 +48,7 @@ abstract class AbstractRouter
      * @param string $app_base_path アプリケーション基底パス
      * @param array $options 設定
      */
-    public function __construct(string $app_name_space, string $app_base_path, array $options)
+    public function __construct(string $app_name_space, string $app_base_path, array $options = [])
     {
         $this->app_name_space = $app_name_space;
         $this->app_base_path = $app_base_path;
