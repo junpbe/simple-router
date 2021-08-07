@@ -165,6 +165,26 @@ abstract class AbstractRouter
     }
 
     /**
+     * コントローラ名設定。
+     *
+     * @param string $controller_name コントローラ名
+     */
+    protected function setControllerName(string $controller_name): void
+    {
+        $this->controller_name = $controller_name;
+    }
+
+    /**
+     * アクション設定。
+     *
+     * @param string $action アクション
+     */
+    protected function setAction(string $action): void
+    {
+        $this->action = $action;
+    }
+
+    /**
      * コントローラ名からクラスの完全修飾名を作る。
      *
      * @param string $controller_name コントローラ名
@@ -172,7 +192,7 @@ abstract class AbstractRouter
      */
     protected function buildControllerFQCN(string $controller_name): string
     {
-        return "{$this->app_name_space}\\{$this->controllers_name_space}\\{$controller_name}{$this->controllers_suffix}";
+        return "{$this->app_name_space}{$this->controllers_name_space}\\{$controller_name}{$this->controllers_suffix}";
     }
 
     /**
@@ -186,7 +206,7 @@ abstract class AbstractRouter
         $fqcn = $this->buildControllerFQCN($controller_name);
 
         // コントローラが存在しない場合エラー（404にする）
-        if(class_exists($fqcn)) {
+        if(!class_exists($fqcn)) {
             throw new NotFoundException("コントローラが存在しなかった。[controller_name={$fqcn}]");
         }
 
