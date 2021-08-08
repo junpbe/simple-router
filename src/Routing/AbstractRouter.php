@@ -117,7 +117,7 @@ abstract class AbstractRouter
     public function dispatch(): string
     {
         // リクエストURLを分解して、情報をセット
-        $url = new Url($_SERVER['REQUEST_URI']);
+        $url = new Url($_SERVER['REQUEST_URI'], $this->app_base_path);
         $params = $this->parse($url);
 
         try {
