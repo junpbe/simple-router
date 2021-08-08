@@ -127,6 +127,9 @@ abstract class AbstractRouter
             // アクション呼び出し
             return $this->invoke($controller, $this->action, $params);
         } catch(NotFoundException $e) {
+            if(defined('DEBUG') && DEBUG) {
+                throw $e;
+            }
             // コントローラは存在するがアクションメソッドがなかった場合は、そのコントローラの404メソッドを呼び出す
             if(isset($controller)) {
                 try {
