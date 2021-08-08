@@ -225,8 +225,7 @@ abstract class AbstractRouter
     protected function invoke(object $controller, string $action, array $params = []): string
     {
         // コントローラに呼び出すメソッドがない場合エラー（404にする）
-        $clazz = new \ReflectionClass($controller);
-        if(!$clazz->hasMethod($action)) {
+        if(!method_exists($controller, $action)) {
             throw new NotFoundException("メソッドがなかった。[controller_name=" . get_class($controller) . ", action={$action}]");
         }
 
