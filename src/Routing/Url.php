@@ -9,19 +9,19 @@ class Url
     /** @var string URI */
     private $uri = '';
 
-    /** @var string アプリケーション基底パス */
-    private $app_base_path = '';
+    /** @var string アプリケーションの基底URL */
+    private $app_url_root = '';
 
     /**
      * コンストラクタ。
      *
      * @param string $uri URI
-     * @param string $app_base_path アプリケーション基底パス
+     * @param string $app_url_root アプリケーションの基底URL
      */
-    public function __construct(string $uri, string $app_base_path = '')
+    public function __construct(string $uri, string $app_url_root = '')
     {
         $this->uri = $uri;
-        $this->app_base_path = $app_base_path;
+        $this->app_url_root = $app_url_root;
     }
 
     /**
@@ -53,8 +53,8 @@ class Url
     {
         $url_paths = $this->getFullPaths();
 
-        // URLのパスからアプリケーション基底パスを除く
-        foreach($this->parsePaths($this->app_base_path) as $idx => $path) {
+        // URLのパスからアプリケーションの基底URLを除く
+        foreach($this->parsePaths($this->app_url_root) as $idx => $path) {
             if(!isset($url_paths[$idx])) {
                 break;
             }

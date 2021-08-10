@@ -24,8 +24,8 @@ abstract class AbstractRouter
     /** @var string アプリケーションの名前空間 */
     private $app_name_space = '';
 
-    /** @var string アプリケーション基底パス */
-    private $app_base_path = '';
+    /** @var string アプリケーションの基底URL */
+    private $app_url_root = '';
 
     /** @var string コントローラ名 */
     private $controller_name = '';
@@ -45,13 +45,13 @@ abstract class AbstractRouter
      * コンストラクタ。
      *
      * @param string $app_name_space アプリケーションの名前空間
-     * @param string $app_base_path アプリケーション基底パス
+     * @param string $app_url_root アプリケーションの基底URL
      * @param array $options 設定
      */
-    public function __construct(string $app_name_space, string $app_base_path, array $options = [])
+    public function __construct(string $app_name_space, string $app_url_root, array $options = [])
     {
-        $this->app_name_space = $app_name_space;
-        $this->app_base_path = $app_base_path;
+        $this->app_name_space = '\\' . trim($app_name_space, '\\');
+        $this->app_url_root = '/' . trim($app_url_root, '/');
         $this->root_controller_name = $options['root_controller_name'] ?? $this->root_controller_name;
         $this->default_action = $options['default_action'] ?? $this->default_action;
         $this->controllers_name_space = $options['controllers_name_space'] ?? $this->controllers_name_space;
@@ -69,13 +69,13 @@ abstract class AbstractRouter
     }
 
     /**
-     * アプリケーション基底パス取得。
+     * アプリケーションの基底URL取得。
      *
-     * @return string アプリケーション基底パス
+     * @return string アプリケーションの基底URL
      */
-    public function getAppBasePath(): string
+    public function getAppUrlRoot(): string
     {
-        return $this->app_base_path;
+        return $this->app_url_root;
     }
 
     /**
@@ -117,7 +117,7 @@ abstract class AbstractRouter
     public function dispatch(): string
     {
         // リクエストURLを分解して、情報をセット
-        $url = new Url($_SERVER['REQUEST_URI'], $this->app_base_path);
+        $url = new Url($_SERVER['REQUEST_URI'], $this->app_url_root);
         $params = $this->parse($url);
 
         try {
