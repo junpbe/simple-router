@@ -1,5 +1,5 @@
 <?php
-namespace Junpbelmondo\SimpleRouter\Routing;
+namespace Junpbelmondo\SimpleRouter;
 
 /**
  * URL。

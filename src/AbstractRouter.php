@@ -1,7 +1,6 @@
 <?php
-namespace Junpbelmondo\SimpleRouter\Routing;
+namespace Junpbelmondo\SimpleRouter;
 
-use Junpbelmondo\SimpleRouter\Exceptions\NotFoundException;
 use Throwable;
 
 /**
@@ -36,7 +35,7 @@ abstract class AbstractRouter
     /**
      * urlを変換して情報をセット。
      *
-     * @param \Junpbelmondo\SimpleRouter\Routing\Url $url URLパスの配列
+     * @param \Junpbelmondo\SimpleRouter\Url $url URLパスの配列
      * @return string[] アクションを呼び出すときのパラメータ
      */
     abstract protected function parse(Url $url): array;

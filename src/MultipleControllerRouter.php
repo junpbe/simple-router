@@ -1,5 +1,5 @@
 <?php
-namespace Junpbelmondo\SimpleRouter\Routing;
+namespace Junpbelmondo\SimpleRouter;
 
 /**
  * マルチコントローラルータ。
@@ -11,7 +11,7 @@ class MultipleControllerRouter extends AbstractRouter
 {
     /**
      * {@inheritDoc}
-     * @see \Junpbelmondo\SimpleRouter\Routing\AbstractRouter::parse()
+     * @see \Junpbelmondo\SimpleRouter\AbstractRouter::parse()
      */
     protected function parse(Url $url): array
     {

@@ -1,5 +1,5 @@
 <?php
-namespace Junpbelmondo\SimpleRouter\Exceptions;
+namespace Junpbelmondo\SimpleRouter;
 
 use Exception;
 
