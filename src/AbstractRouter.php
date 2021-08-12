@@ -45,7 +45,7 @@ abstract class AbstractRouter
      *
      * @param string $app_name_space アプリケーションの名前空間
      * @param string $app_url_root アプリケーションの基底URL
-     * @param array $options 設定
+     * @param array $options オプション
      */
     public function __construct(string $app_name_space, string $app_url_root, array $options = [])
     {
