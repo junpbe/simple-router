@@ -20,7 +20,7 @@ class Url
      */
     public function __construct(string $uri, string $app_url_root = '')
     {
-        $this->uri = $uri;
+        $this->uri = parse_url($uri, PHP_URL_PATH);
         $this->app_url_root = $app_url_root;
     }
 
