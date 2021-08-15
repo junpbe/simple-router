@@ -203,7 +203,7 @@ abstract class AbstractRouter
      * @param string $controller_name コントローラ名
      * @throws NotFoundException コントローラが存在しなかった場合
      */
-    protected function createController(string $controller_name): object
+    protected function createController(string $controller_name)
     {
         $fqcn = $this->buildControllerFQCN($controller_name);
 
@@ -224,7 +224,7 @@ abstract class AbstractRouter
      * @return string レスポンス
      * @throws NotFoundException メソッドがなかった場合
      */
-    protected function invoke(object $controller, string $action, array $params = []): string
+    protected function invoke($controller, string $action, array $params = []): string
     {
         // コントローラに呼び出すメソッドがない場合エラー（404にする）
         if(!method_exists($controller, $action)) {
